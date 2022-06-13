@@ -10,9 +10,9 @@
         android:id="@+id/loginConnexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="100dp"
         android:text="Connexion"
-        android:textColor="#1976D2"
+        android:textColor="#26BFBF"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,8 @@
             android:id="@+id/loginEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email" />
+            android:hint="Email"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,27 +60,29 @@
         android:id="@+id/inscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="100dp"
         android:text="Inscription"
         app:layout_constraintEnd_toStartOf="@+id/effacer"
         app:layout_constraintStart_toEndOf="@+id/connexion"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/loginPassLayout"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/connexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="100dp"
         android:text="Connexion"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/loginPassLayout"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/effacer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
         android:text="Effacer"
         app:layout_constraintEnd_toEndOf="parent"

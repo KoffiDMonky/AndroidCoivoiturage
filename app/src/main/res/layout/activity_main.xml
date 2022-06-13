@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             app:tabIconTint="#26BFBF"
             app:tabIndicatorColor="#26BFBF"
+            app:tabTextAppearance="@style/TextAppearance.AppCompat.Small"
             app:tabTextColor="#26BFBF" />
     </com.google.android.material.appbar.AppBarLayout>
 
