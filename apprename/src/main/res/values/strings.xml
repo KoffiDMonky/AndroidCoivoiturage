@@ -10,6 +10,8 @@
     <string name="login">Identifiant</string>
     <string name="password">Mot de passe</string>
     <string name="connexion">Connexion</string>
+    <string name="inscription">Inscription</string>
+    <string name="effacer">Effacer</string>
 
 
 

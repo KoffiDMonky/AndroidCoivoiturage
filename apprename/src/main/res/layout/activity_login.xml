@@ -33,7 +33,7 @@
             android:id="@+id/loginEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="@string/login"
             tools:ignore="SpeakableTextPresentCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -53,7 +53,7 @@
             android:id="@+id/loginPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mot de passe" />
+            android:hint="@string/password" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="#26BFBF"
-        android:text="Inscription"
+        android:text="@string/inscription"
         app:layout_constraintEnd_toStartOf="@+id/effacer"
         app:layout_constraintStart_toEndOf="@+id/connexion"
         app:layout_constraintTop_toBottomOf="@id/loginConnexion"
@@ -88,7 +88,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#26BFBF"
-        android:text="Effacer"
+        android:text="@string/effacer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginConnexion" />
 
