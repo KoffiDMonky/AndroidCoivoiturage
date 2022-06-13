@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import agenor.houessou.projetcovoiture_houessou_monvoisin.ListeDesTrajets;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.R;
+import agenor.houessou.projetcovoiture_houessou_monvoisin.RechercheTrajet;
+import agenor.houessou.projetcovoiture_houessou_monvoisin.VosTrajets;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -27,15 +30,39 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        switch (position){
+            case 0: //Page number 1
+                return ListeDesTrajets.newInstance();
+            case 1: //Page number 2
+                return RechercheTrajet.newInstance();
+            case 2: //Page number 3
+                return VosTrajets.newInstance();
+            case 3: //Page number 4
+                return VosTrajets.newInstance();
+            case 4: //Page number 5
+                return VosTrajets.newInstance();
+            default:
+                return null;
+        }
     }
 
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return mContext.getResources().getString(TAB_TITLES[position]);
+        switch (position){
+            case 0: //Page number 1
+                return "Liste des trajets";
+            case 1: //Page number 2
+                return "Rechercher un trajet";
+            case 2: //Page number 3
+                return "Vos trajets";
+            case 3: //Page number 3
+                return "Publier un trajet";
+            case 4: //Page number 3
+                return "Mon compte";
+            default:
+                return null;
+        }
     }
 
     @Override

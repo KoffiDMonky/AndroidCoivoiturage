@@ -6,7 +6,12 @@
         <entry key="..\:/Users/agenor.houessou/AndroidStudioProjects/ProjetCovoitureHouessouMonvoissin/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/agenor.houessou/AndroidStudioProjects/ProjetCovoitureHouessouMonvoissin/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/agenor.houessou/AndroidStudioProjects/ProjetCovoitureHouessouMonvoissin/app/src/main/res/layout/authentification.xml" value="0.25226449275362317" />
+        <entry key="..\:/Users/agenor.houessou/AndroidStudioProjects/ProjetCovoitureHouessouMonvoissin/app/src/main/res/layout/fragment_liste_des_trajets.xml" value="0.152" />
         <entry key="..\:/Users/agenor.houessou/AndroidStudioProjects/ProjetCovoitureHouessouMonvoissin/app/src/main/res/layout/fragment_main.xml" value="0.264" />
+        <entry key="..\:/Users/agenor.houessou/AndroidStudioProjects/ProjetCovoitureHouessouMonvoissin/app/src/main/res/layout/fragment_mon_compte.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/agenor.houessou/AndroidStudioProjects/ProjetCovoitureHouessouMonvoissin/app/src/main/res/layout/fragment_publier_trajet.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/agenor.houessou/AndroidStudioProjects/ProjetCovoitureHouessouMonvoissin/app/src/main/res/layout/fragment_recherche_trajet.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/agenor.houessou/AndroidStudioProjects/ProjetCovoitureHouessouMonvoissin/app/src/main/res/layout/fragment_vos_trajets.xml" value="0.11302083333333333" />
       </map>
     </option>
   </component>
