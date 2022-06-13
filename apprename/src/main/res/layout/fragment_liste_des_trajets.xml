@@ -7,15 +7,16 @@
     android:gravity="center"
     android:background="#FDFDFD">
 
-    <TextView
-        android:id="@+id/fragment_page_news_title"
+    <Button
+        android:id="@+id/getList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dip"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="#26BFBF"
-        android:textAlignment="center"
-        android:text="Nous pourrions afficher les trajets ici non ?"/>
+        android:onClick="getListeTrajet"
+        android:text="getList" />
+
+    <ListView
+        android:id="@+id/listeTrajet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </FrameLayout>
