@@ -33,9 +33,7 @@
             android:id="@+id/loginEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/login"
-            android:inputType="textPersonName|text"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:hint="Email" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,8 +52,7 @@
             android:id="@+id/loginPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:inputType="textWebPassword" />
+            android:hint="Mot de passe" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

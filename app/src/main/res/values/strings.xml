@@ -4,4 +4,8 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="login">Identifiant</string>
     <string name="password">Mot de passe</string>
+    <string name="prompt_email">email</string>
+    <string name="prompt_password">password</string>
+    <string name="action_sign_in_short">action signin_short</string>
+    <string name="action_sign_in">action_sign_in</string>
 </resources>
