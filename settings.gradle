@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Projet Covoiture - Houessou-Monvoissin"
-include ':app'
+include ':apprename'

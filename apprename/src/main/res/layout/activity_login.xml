@@ -10,8 +10,8 @@
         android:id="@+id/loginConnexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Connexion"
+        android:text="@string/connexion"
+        android:textAlignment="center"
         android:textColor="#26BFBF"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginConnexion">
+        app:layout_constraintTop_toBottomOf="@id/inscription">
 
         <EditText
             android:id="@+id/loginEmail"
@@ -60,12 +60,12 @@
         android:id="@+id/inscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Inscription"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#26BFBF"
+        android:text="Inscription"
         app:layout_constraintEnd_toStartOf="@+id/effacer"
         app:layout_constraintStart_toEndOf="@+id/connexion"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassLayout"
+        app:layout_constraintTop_toBottomOf="@id/loginConnexion"
         tools:ignore="TextContrastCheck" />
 
     <Button
@@ -73,23 +73,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
-        android:text="Connexion"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#26BFBF"
+        android:onClick="login"
+        android:text="@string/connexion"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassLayout"
+        app:layout_constraintTop_toBottomOf="@id/loginConnexion"
         tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/effacer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="Effacer"
         android:backgroundTint="#26BFBF"
+        android:text="Effacer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassLayout" />
+        app:layout_constraintTop_toBottomOf="@id/loginConnexion" />
 
     <ImageView
         android:id="@+id/imageView2"
