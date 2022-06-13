@@ -11,4 +11,5 @@
     <string name="prompt_password">password</string>
     <string name="action_sign_in_short">action signin_short</string>
     <string name="action_sign_in">action_sign_in</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -62,6 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="Inscription"
+        android:backgroundTint="#26BFBF"
         app:layout_constraintEnd_toStartOf="@+id/effacer"
         app:layout_constraintStart_toEndOf="@+id/connexion"
         app:layout_constraintTop_toBottomOf="@+id/loginPassLayout"
@@ -74,6 +75,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="100dp"
         android:text="Connexion"
+        android:backgroundTint="#26BFBF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginPassLayout"
         tools:ignore="TextContrastCheck" />
@@ -85,6 +87,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
         android:text="Effacer"
+        android:backgroundTint="#26BFBF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginPassLayout" />
 
