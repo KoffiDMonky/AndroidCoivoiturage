@@ -16,6 +16,6 @@
         android:textStyle="bold"
         android:textColor="#26BFBF"
         android:textAlignment="center"
-        android:text="Nous pourrions afficher mes trajets ici non ?"/>
+        android:text="Vos trajets"/>
 
 </FrameLayout>

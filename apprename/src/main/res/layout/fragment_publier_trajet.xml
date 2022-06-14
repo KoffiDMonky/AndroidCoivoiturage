@@ -12,10 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dip"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="#26BFBF"
+        android:text="Publier un trajet"
         android:textAlignment="center"
-        android:text="Nous pourrions publier des trajets ici non ?"/>
+        android:textColor="#26BFBF"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
 </FrameLayout>

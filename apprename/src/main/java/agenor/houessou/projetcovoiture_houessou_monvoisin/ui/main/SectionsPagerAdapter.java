@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import agenor.houessou.projetcovoiture_houessou_monvoisin.ListeDesTrajets;
+import agenor.houessou.projetcovoiture_houessou_monvoisin.MonCompte;
+import agenor.houessou.projetcovoiture_houessou_monvoisin.PublierTrajet;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.R;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.RechercheTrajet;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.VosTrajets;
@@ -38,9 +40,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 2: //Page number 3
                 return VosTrajets.newInstance();
             case 3: //Page number 4
-                return VosTrajets.newInstance();
+                return PublierTrajet.newInstance();
             case 4: //Page number 5
-                return VosTrajets.newInstance();
+                return MonCompte.newInstance();
             default:
                 return null;
         }

@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
     setContentView(R.layout.activity_login);
   }
 
-  // Lanché à l'appuie du bouton "Connexion" de l'activity login
+  // Lancé à l'appuie du bouton "Connexion" de l'activity login
   public void login(View view) {
     EditText username = findViewById(R.id.loginEmail);
     EditText password = findViewById(R.id.loginPass);
@@ -86,6 +86,7 @@ public class Login extends AppCompatActivity {
       requestQueue.add(jsonObjectRequest);
     }
   }
+
 
   public void logedIn(View view) {
     setContentView(R.layout.activity_main);

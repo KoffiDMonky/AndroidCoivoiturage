@@ -1,0 +1,83 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="agenor.houessou.projetcovoiture_houessou_monvoisin"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml
+10
+11    <application
+11-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:5:5-28:19
+12        android:allowBackup="true"
+12-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:6:9-35
+13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+13-->[androidx.core:core:1.7.0] C:\Users\agenor.houessou\.gradle\caches\transforms-3\b9e4376e452ce4f1a2bbb1fc4b534124\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+14        android:debuggable="true"
+15        android:icon="@mipmap/ic_launcher"
+15-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:7:9-43
+16        android:label="@string/app_name"
+16-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:8:9-41
+17        android:roundIcon="@mipmap/ic_launcher_round"
+17-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:9:9-54
+18        android:supportsRtl="true"
+18-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:10:9-35
+19        android:testOnly="true"
+20        android:theme="@style/Theme.ProjetCovoitureHouessouMonvoissin" >
+20-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:11:9-71
+21        <activity
+21-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:12:9-22:20
+22            android:name="agenor.houessou.projetcovoiture_houessou_monvoisin.Login"
+22-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:13:13-34
+23            android:exported="true"
+23-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:14:13-36
+24            android:label="@string/app_name"
+24-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:15:13-45
+25            android:theme="@style/Theme.ProjetCovoitureHouessouMonvoissin.NoActionBar" >
+25-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:16:13-87
+26            <intent-filter>
+26-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:17:13-21:29
+27                <action android:name="android.intent.action.MAIN" />
+27-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:18:17-69
+27-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:18:25-66
+28
+29                <category android:name="android.intent.category.LAUNCHER" />
+29-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:20:17-77
+29-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:20:27-74
+30            </intent-filter>
+31        </activity>
+32        <activity
+32-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:24:9-27:20
+33            android:name="agenor.houessou.projetcovoiture_houessou_monvoisin.MainActivity"
+33-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:25:13-41
+34            android:exported="true" >
+34-->C:\Users\agenor.houessou\AndroidStudioProjects\ProjetCovoitureHouessouMonvoissin\app\src\main\AndroidManifest.xml:26:13-36
+35        </activity>
+36
+37        <provider
+37-->[androidx.emoji2:emoji2:1.0.0] C:\Users\agenor.houessou\.gradle\caches\transforms-3\2c96a293c0a835e94af1ddc4d74ff22d\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+38            android:name="androidx.startup.InitializationProvider"
+38-->[androidx.emoji2:emoji2:1.0.0] C:\Users\agenor.houessou\.gradle\caches\transforms-3\2c96a293c0a835e94af1ddc4d74ff22d\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
+39            android:authorities="agenor.houessou.projetcovoiture_houessou_monvoisin.androidx-startup"
+39-->[androidx.emoji2:emoji2:1.0.0] C:\Users\agenor.houessou\.gradle\caches\transforms-3\2c96a293c0a835e94af1ddc4d74ff22d\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
+40            android:exported="false" >
+40-->[androidx.emoji2:emoji2:1.0.0] C:\Users\agenor.houessou\.gradle\caches\transforms-3\2c96a293c0a835e94af1ddc4d74ff22d\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
+41            <meta-data
+41-->[androidx.emoji2:emoji2:1.0.0] C:\Users\agenor.houessou\.gradle\caches\transforms-3\2c96a293c0a835e94af1ddc4d74ff22d\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+42                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+42-->[androidx.emoji2:emoji2:1.0.0] C:\Users\agenor.houessou\.gradle\caches\transforms-3\2c96a293c0a835e94af1ddc4d74ff22d\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
+43                android:value="androidx.startup" />
+43-->[androidx.emoji2:emoji2:1.0.0] C:\Users\agenor.houessou\.gradle\caches\transforms-3\2c96a293c0a835e94af1ddc4d74ff22d\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
+44            <meta-data
+44-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\agenor.houessou\.gradle\caches\transforms-3\bdba8a1b7f77d959878d5a52670cf96f\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+45                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+45-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\agenor.houessou\.gradle\caches\transforms-3\bdba8a1b7f77d959878d5a52670cf96f\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+46                android:value="androidx.startup" />
+46-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\agenor.houessou\.gradle\caches\transforms-3\bdba8a1b7f77d959878d5a52670cf96f\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+47        </provider>
+48    </application>
+49
+50</manifest>
