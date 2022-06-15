@@ -37,7 +37,6 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/pseudo"
                 android:layout_width="409dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -46,6 +45,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/fragment_page_news_title">
 
                 <com.google.android.material.textfield.TextInputEditText
+
+                    android:id="@+id/pseudo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Pseudo" />
@@ -53,7 +54,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/prenom"
                 android:layout_width="409dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
@@ -64,13 +64,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/pseudo">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/prenom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Prénom" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/Nom"
                 android:layout_width="409dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -80,13 +80,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/prenom">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nom" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/telephone"
                 android:layout_width="409dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
@@ -97,13 +97,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/Nom">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/telephone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Téléphone" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/email"
                 android:layout_width="409dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
@@ -114,13 +114,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/telephone">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/Marque"
                 android:layout_width="409dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
@@ -131,13 +131,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/email">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/marque"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Marque de voiture" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/modele"
                 android:layout_width="409dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
@@ -148,13 +148,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/Marque">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/modele"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Modèle de voiture" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/places"
                 android:layout_width="409dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
@@ -165,6 +165,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/modele">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/places"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nombre de place" />

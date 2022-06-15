@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -51,6 +53,7 @@ public class MonCompte extends Fragment {
 
     public void getDataUser(View view){
 
+
         Log.d("agénor","getDataUser");
         // Instantiate the RequestQueue.
         RequestQueue requestQueue = Volley.newRequestQueue(context);
@@ -65,25 +68,55 @@ public class MonCompte extends Fragment {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Log.d("agénor",response.toString());
 
                         try {
 
                             // On récupère les valeurs depuis l'objet JSON
 
                             String nom = response.getString("nom");
+                            EditText editTextNom = (EditText)getView().findViewById(R.id.nom);
+                            editTextNom.setText(nom, TextView.BufferType.EDITABLE);
+
                             String prenom = response.getString("prenom");
+                            EditText editTextPrenom = (EditText)getView().findViewById(R.id.prenom);
+                            editTextPrenom.setText(prenom, TextView.BufferType.EDITABLE);
+
                             String tel = response.getString("tel");
+                            EditText editTextTel = (EditText)getView().findViewById(R.id.telephone);
+                            editTextTel.setText(tel, TextView.BufferType.EDITABLE);
+
                             String email = response.getString("email");
-                            String ville = response.getString("ville");
+                            EditText editTextMail = (EditText)getView().findViewById(R.id.email);
+                            editTextMail.setText(email, TextView.BufferType.EDITABLE);
+
+
+                            //String ville = response.getString("ville");
+                            //EditText editTextVille = (EditText)getView().findViewById(R.id.adresse);
+                            //editTextVille.setText(ville, TextView.BufferType.EDITABLE);
+
                             String nbPlaces = response.getString("nb_places");
+                            EditText editTextPlace = (EditText)getView().findViewById(R.id.places);
+                            editTextPlace.setText(nbPlaces, TextView.BufferType.EDITABLE);
+
                             String marque = response.getString("marque");
+                            EditText editTextMarque = (EditText)getView().findViewById(R.id.marque);
+                            editTextMarque.setText(marque, TextView.BufferType.EDITABLE);
+
                             String modele = response.getString("modele");
+                            EditText editTextModele = (EditText)getView().findViewById(R.id.modele);
+                            editTextModele.setText(modele, TextView.BufferType.EDITABLE);
+
+
 
 
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
+
+
                     }
                 }, new Response.ErrorListener() {
             @Override
