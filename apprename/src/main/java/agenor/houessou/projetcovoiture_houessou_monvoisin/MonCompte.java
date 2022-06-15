@@ -55,7 +55,7 @@ public class MonCompte extends Fragment {
         // Instantiate the RequestQueue.
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         SharedPreferences idUser = context.getSharedPreferences("Login", Context.MODE_PRIVATE);
-        Log.d("ronan","setIdUser:"+idUser.getInt("userId", 1));
+        Log.d("agénor","setIdUser:"+idUser.getInt("userId", 1));
 
         String url = "https://dev.lamy.bzh/selectPersonne/" + idUser.getInt("userId", 1) ;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
@@ -65,6 +65,7 @@ public class MonCompte extends Fragment {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+
                         try {
 
                             // On récupère les valeurs depuis l'objet JSON
@@ -74,11 +75,11 @@ public class MonCompte extends Fragment {
                             String tel = response.getString("tel");
                             String email = response.getString("email");
                             String ville = response.getString("ville");
-                            String nbPlaces = response.getString("nbPlaces");
+                            String nbPlaces = response.getString("nb_places");
                             String marque = response.getString("marque");
                             String modele = response.getString("modele");
 
-                            Log.d("agénor", response.toString());
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();

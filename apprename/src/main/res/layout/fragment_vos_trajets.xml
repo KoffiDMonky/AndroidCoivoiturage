@@ -12,10 +12,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dip"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="#26BFBF"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Mes trajets"
         android:textAlignment="center"
-        android:text="Vos trajets"/>
+        android:textColor="#26BFBF"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/listeTrajet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </FrameLayout>
