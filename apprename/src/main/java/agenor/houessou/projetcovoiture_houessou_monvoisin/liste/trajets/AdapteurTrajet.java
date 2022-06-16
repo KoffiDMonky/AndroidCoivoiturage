@@ -1,4 +1,4 @@
-package agenor.houessou.projetcovoiture_houessou_monvoisin;
+package agenor.houessou.projetcovoiture_houessou_monvoisin.liste.trajets;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import agenor.houessou.projetcovoiture_houessou_monvoisin.R;
+import agenor.houessou.projetcovoiture_houessou_monvoisin.objets.metier.Trajet;
 
 public class AdapteurTrajet extends ArrayAdapter<Trajet> {
   private Activity activity;
@@ -67,7 +70,7 @@ public class AdapteurTrajet extends ArrayAdapter<Trajet> {
     public TextView depart;
     public TextView arrive;
     public TextView nbKms;
-    public TextView date_trajet;
+    public TextView dateTrajet;
   }
 
   public View getView(int position, View convertView, ViewGroup  parent){
@@ -76,13 +79,13 @@ public class AdapteurTrajet extends ArrayAdapter<Trajet> {
 
     try {
       if (convertView == null) {
-        vi = inflater.inflate(R.layout.trajet_item_layout, null);
+        vi = inflater.inflate(R.layout.trajet_in_list_layout, null);
         holder = new ViewHolder();
 
         holder.depart = (TextView) vi.findViewById(R.id.depart);
         holder.arrive = (TextView) vi.findViewById(R.id.arrive);
         holder.nbKms = (TextView) vi.findViewById(R.id.nbKms);
-        holder.date_trajet = (TextView) vi.findViewById(R.id.date_trajet);
+        holder.dateTrajet = (TextView) vi.findViewById(R.id.date_trajet);
 
         vi.setTag(holder);
       } else {
@@ -91,7 +94,8 @@ public class AdapteurTrajet extends ArrayAdapter<Trajet> {
       holder.depart.setText(lTrajet.get(position).getVille_dep());
       holder.arrive.setText(lTrajet.get(position).getVille_arr());
       holder.nbKms.setText(lTrajet.get(position).getNbKms()+" kms");
-      //holder.date_trajet.setText(lTrajet.get(position).getDateTrajet().toString());
+      holder.dateTrajet.setText(lTrajet.get(position).getDateTrajetString(getContext()));
+      //android.text.format.DateFormat.
     } catch (Exception e) {
 
 

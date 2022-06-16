@@ -27,6 +27,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import agenor.houessou.projetcovoiture_houessou_monvoisin.liste.trajets.AdapteurTrajet;
+import agenor.houessou.projetcovoiture_houessou_monvoisin.objets.metier.Trajet;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link VosTrajets#newInstance} factory method to
@@ -88,7 +91,7 @@ public class VosTrajets extends Fragment {
                         }
                         Log.d("ronan","start Adapteur");
                         ListView viewListeTrajet = (ListView)getView().findViewById(R.id.listeTrajet);
-                        AdapteurTrajet adapteurTrajet = new AdapteurTrajet(context, R.layout.trajet_item_layout, listeTrajet, getActivity());
+                        AdapteurTrajet adapteurTrajet = new AdapteurTrajet(context, R.layout.trajet_in_list_layout, listeTrajet, getActivity());
 
                         viewListeTrajet.setAdapter(adapteurTrajet);
                     }

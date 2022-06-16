@@ -1,5 +1,10 @@
-package agenor.houessou.projetcovoiture_houessou_monvoisin;
+package agenor.houessou.projetcovoiture_houessou_monvoisin.objets.metier;
+import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -72,6 +77,11 @@ public class Trajet implements Serializable {
 
   public Date getDateTrajet() {
     return dateTrajet;
+  }
+
+  public String getDateTrajetString(Context context) {
+    SimpleDateFormat simpledateformat = new SimpleDateFormat("dd-MM-yy kk:mm");
+    return simpledateformat.format(dateTrajet);
   }
 
   public void setDateTrajet(Date dateTrajet) {

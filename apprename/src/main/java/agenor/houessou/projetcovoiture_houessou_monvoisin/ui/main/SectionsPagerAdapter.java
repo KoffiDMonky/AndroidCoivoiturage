@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import agenor.houessou.projetcovoiture_houessou_monvoisin.ListeDesTrajets;
+import agenor.houessou.projetcovoiture_houessou_monvoisin.liste.trajets.ListeDesTrajets;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.MonCompte;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.PublierTrajet;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.R;
