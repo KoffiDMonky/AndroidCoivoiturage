@@ -186,6 +186,8 @@ public class RechercheTrajet extends Fragment implements AdapterView.OnItemClick
         Trajet clickedTrajet = listeTrajet.get(position);
 
         Bundle bundle = new Bundle();
+        bundle.putInt("listeId", R.id.listeTrajetRecherche);
+        bundle.putInt("soloId", R.id.trajetSoloSearch);
         bundle.putLong("id", id);
         bundle.putString("ville_dep", clickedTrajet.getVille_dep());
         bundle.putString("ville_arr", clickedTrajet.getVille_arr());
@@ -198,8 +200,7 @@ public class RechercheTrajet extends Fragment implements AdapterView.OnItemClick
 
         FragmentTransaction ft = ((FragmentActivity)context).getSupportFragmentManager().beginTransaction();
         ft
-                .replace(R.id.view_pager, trajetSolo)
-                .addToBackStack("back")
+                .replace(R.id.trajetSoloSearch, trajetSolo)
                 .commit();
 
         Log.d("ronan", "hello "+position+" "+ id);
