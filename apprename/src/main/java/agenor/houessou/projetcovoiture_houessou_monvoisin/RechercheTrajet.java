@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -42,6 +43,7 @@ import agenor.houessou.projetcovoiture_houessou_monvoisin.objets.metier.Trajet;
  */
 public class RechercheTrajet extends Fragment implements AdapterView.OnItemClickListener {
     private Context context;
+    private View view;
     private ArrayList<Trajet> listeTrajet;
 
     public static RechercheTrajet newInstance() {
@@ -53,10 +55,23 @@ public class RechercheTrajet extends Fragment implements AdapterView.OnItemClick
                              Bundle savedInstanceState) {
         context = getActivity();
         listeTrajet = new ArrayList<Trajet>();
-        getListeTrajet(getView());
+        View view = getView();
+        getListeTrajet(view);
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_recherche_trajet, container, false);
     }
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState){
+        this.view = view;
+        Button quitBtn = view.findViewById(R.id.rechercher);
+        quitBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                searchListeTrajet(RechercheTrajet.this.view);
+            }
+        });
+    }
+
     public void getListeTrajet(View view) {
 
         Log.d("ronan","getListeTrajet");
@@ -113,9 +128,8 @@ public class RechercheTrajet extends Fragment implements AdapterView.OnItemClick
         requestQueue.add(jsonArrayRequest);
     }
 
-
     public void searchListeTrajet(View view) {
-        Log.d("ronan","searchListeTrajet");
+        Log.d("ronan","searchListeTrajet"+view.toString());
 
         EditText depart = view.findViewById(R.id.search_depart);
         EditText arrivee = view.findViewById(R.id.search_arrivee);
@@ -186,7 +200,7 @@ public class RechercheTrajet extends Fragment implements AdapterView.OnItemClick
         Trajet clickedTrajet = listeTrajet.get(position);
 
         Bundle bundle = new Bundle();
-        bundle.putInt("listeId", R.id.listeTrajetRecherche);
+        bundle.putInt("listeId", R.id.group2);
         bundle.putInt("soloId", R.id.trajetSoloSearch);
         bundle.putLong("id", id);
         bundle.putString("ville_dep", clickedTrajet.getVille_dep());

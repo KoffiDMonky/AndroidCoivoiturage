@@ -101,7 +101,6 @@ public class AdapteurTrajet extends ArrayAdapter<Trajet> {
 
     }
     return vi;
-
   }
 
 }
