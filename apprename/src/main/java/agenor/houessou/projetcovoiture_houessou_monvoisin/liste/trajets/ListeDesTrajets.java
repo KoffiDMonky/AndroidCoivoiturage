@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
@@ -115,6 +116,7 @@ public class ListeDesTrajets extends Fragment implements AdapterView.OnItemClick
 
   public void onItemClick(AdapterView parent, View v, int position, long id) {
     Trajet clickedTrajet = listeTrajet.get(position);
+    Log.d("ronan","trajet"+clickedTrajet);
 
     Bundle bundle = new Bundle();
     bundle.putLong("id", id);
@@ -127,11 +129,11 @@ public class ListeDesTrajets extends Fragment implements AdapterView.OnItemClick
     TrajetSolo trajetSolo = new TrajetSolo();
     trajetSolo.setArguments(bundle);
 
-    getFragmentManager()
-            .beginTransaction()
-            .replace(R.id.view_pager, trajetSolo)
-            .commit();
+    FragmentTransaction ft = ((FragmentActivity)context).getSupportFragmentManager().beginTransaction();
+    ft
+      .replace(R.id.trajetSoloListe, trajetSolo)
+      .commit();
 
-    Log.d("ronan", "hello"+position+" "+ id);
+    Log.d("ronan", "hello "+position+" "+ id);
   }
 }
