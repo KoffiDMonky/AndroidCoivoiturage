@@ -119,6 +119,8 @@ public class ListeDesTrajets extends Fragment implements AdapterView.OnItemClick
     Log.d("ronan","trajet"+clickedTrajet);
 
     Bundle bundle = new Bundle();
+    bundle.putInt("listeId", R.id.listeTrajet);
+    bundle.putInt("soloId", R.id.trajetSoloListe);
     bundle.putLong("id", id);
     bundle.putString("ville_dep", clickedTrajet.getVille_dep());
     bundle.putString("ville_arr", clickedTrajet.getVille_arr());

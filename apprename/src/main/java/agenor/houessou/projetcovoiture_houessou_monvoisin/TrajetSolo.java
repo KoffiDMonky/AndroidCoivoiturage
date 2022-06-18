@@ -23,6 +23,8 @@ import agenor.houessou.projetcovoiture_houessou_monvoisin.ui.main.PlaceholderFra
  */
 public class TrajetSolo extends Fragment {
     private int layout = R.layout.fragment_trajet_solo;
+    private int soloId = R.id.trajetSoloListe;
+    private int listeId = R.id.listeTrajet;
 
     public TrajetSolo(){
         super(R.layout.fragment_trajet_solo);
@@ -39,23 +41,29 @@ public class TrajetSolo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        Log.d("ronan","container: "+container.toString());
-
         return inflater.inflate(layout, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
+        // Put info into text fields
+        Bundle bundle = this.getArguments();
+        if(bundle != null) {
+            Log.d("ronan", "onViewCreated solo :"+ bundle.toString());
+            listeId = bundle.getInt("listeId",R.id.listeTrajet);
+            soloId = bundle.getInt("soloId",R.id.trajetSoloListe);
+        }
         populateView(view);
+
+        // Config button to go back on list view
         Button quitBtn = view.findViewById(R.id.quit);
         quitBtn.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View view) {
                 View rootView = view.getRootView();
-                rootView.findViewById(R.id.listeTrajet).setVisibility(View.VISIBLE);
-                rootView.findViewById(R.id.trajetSoloListe).setVisibility(View.INVISIBLE);
+                rootView.findViewById(listeId).setVisibility(View.VISIBLE);
+                rootView.findViewById(soloId).setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -69,21 +77,24 @@ public class TrajetSolo extends Fragment {
         if(bundle != null){
             Log.d("ronan", "Trajet solo :"+ bundle.toString());
 
+            // On recupère les textview des champs
             TextView depart = view.findViewById(R.id.solo_depart);
             TextView arrive = view.findViewById(R.id.solo_arrive);
             TextView nbKms = view.findViewById(R.id.solo_kms);
             TextView dateTrajet = view.findViewById(R.id.solo_date);
 
-            // TODO : comprendre pourquoi ça ne s'affiche pas
-
+            // On insère les valeurs dans les textview
             depart.setText(bundle.getString("ville_dep"));
             arrive.setText(bundle.getString("ville_arr"));
             nbKms.setText(bundle.getInt("nbKms")+"");
             dateTrajet.setText(bundle.getString("dateTrajet"));
 
+            Log.d("ronan","soloId:"+soloId);
+            Log.d("ronan","listeId:"+listeId);
+            // On affiche la vue solo et cache la liste
             View rootView = view.getRootView();
-            rootView.findViewById(R.id.trajetSoloListe).setVisibility(View.VISIBLE);
-            rootView.findViewById(R.id.listeTrajet).setVisibility(View.INVISIBLE);
+            rootView.findViewById(soloId).setVisibility(View.VISIBLE);
+            rootView.findViewById(listeId).setVisibility(View.INVISIBLE);
         }
     }
 
