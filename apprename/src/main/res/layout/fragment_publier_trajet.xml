@@ -40,9 +40,12 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_page_news_title">
 
         <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:inputType="none"
+            android:text="Un lieu"
             />
 
     </com.google.android.material.textfield.TextInputLayout>

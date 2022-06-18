@@ -19,7 +19,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -182,29 +184,52 @@ public class MonCompte extends Fragment {
             SharedPreferences idUser = context.getSharedPreferences("Login", Context.MODE_PRIVATE);
             Log.d("agénor", "setIdUser:" + idUser.getInt("userId", 1));
 
-            //String url = "https://dev.lamy.bzh/updatePersonne/" + idUser.getInt("userId", 1) + "/" + nom.getText().toString() + "/" + prenom.getText().toString() + "/" + tel.getText().toString() + "/" + email.getText().toString() + "/" + ville.getText().toString() + "/" + nbPlaces.getText().toString() + "/" + marque.getText().toString() + "/" + modele.getText().toString() ;
-            String url = "https://dev.lamy.bzh/updatePersonne/ronan/monvoisin/0606060606/ronan@free.fr/7/8/5/22";
-            Log.d("agénor", "url:" + url);
+            String url = "https://dev.lamy.bzh/updatePersonne/"
+                    + prenom.getText().toString()
+                    + "/" + nom.getText().toString()
+                    + "/" + tel.getText().toString()
+                    + "/" + email.getText().toString()
+                    + "/" + marque.getText().toString()
+                    + "/" + modele.getText().toString()
+                    + "/" + nbPlaces.getText().toString()
+                    + "/" + idUser.getInt("userId", 1);
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                    Request.Method.GET,
-                    url,
-                    null,
-                    new Response.Listener<JSONObject>() {
+            Log.d("agénor", "url:" + url);
+            //https://dev.lamy.bzh/updatePersonne/ronan/monvoisin/0123456789/test@test.fr/7/8/5/22
+
+// Request a string response from the provided URL.
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                    new Response.Listener<String>() {
                         @Override
-                        public void onResponse(JSONObject response) {
-                            Log.d("agénor", "responseUpdate:" + response.toString());
-                            if(response.equals("ok")){
-                                 Toast.makeText(context, "Vous avez bien modifié votre compte.", Toast.LENGTH_SHORT).show();
-                             }
+                        public void onResponse(String response) {
+
+                            Log.d("agénor", "reponse" + response);
+
+                            if(response.equals("[\"ok\"]")){
+                                Toast.makeText(context, "Vous avez bien modifié votre compte.", Toast.LENGTH_SHORT).show();
+                                getDataUser(getView());
+                            }
                         }
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(context, "Nous ne sommes pas parvenu à mettre à jours votre compte ...", Toast.LENGTH_SHORT).show();
+                    Log.d("agénor", "error" + error);
                 }
-            });
-            requestQueue.add(jsonObjectRequest);
+            }){
+                @Override
+                public Map<String, String> getHeaders(){
+                    Map<String, String> params = new HashMap<String, String>();
+                    SharedPreferences token = context.getSharedPreferences("Login", Context.MODE_PRIVATE);
+                    Log.d("agénor","setHeader:"+token.getString("token","vide"));
+                    params.put("x-auth-token", token.getString("token","vide"));
+                    return params;
+                }
+            };
+
+// Add the request to the RequestQueue.
+            requestQueue.add(stringRequest);
+
+
         }
     }
 

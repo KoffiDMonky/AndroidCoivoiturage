@@ -52,51 +52,52 @@ public class Login extends AppCompatActivity {
     EditText password = findViewById(R.id.loginPass);
     rContext = this;
 
-    if (username.getText().toString().equals("")) {
-      Toast.makeText(this, "Vous n'avez pas entré d'identifiant.", Toast.LENGTH_SHORT).show();
-    } else if (password.getText().toString().length() < 8) {
-      Toast.makeText(this, "Le mot de passe doit contenir 8 caractères minimum.", Toast.LENGTH_SHORT).show();
-    } else {
-      // Instantiate the RequestQueue.
-      RequestQueue requestQueue = Volley.newRequestQueue(this);
-      // TODO : escape URL
-      String url = "https://dev.lamy.bzh/login/" + username.getText().toString() + "/" + password.getText().toString();
-      JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-              Request.Method.GET,
-              url,
-              null,
-              new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                  try {
-                    // On récupère les valeurs depuis l'objet JSON
-                    String token = response.getString("token");
-                    int userId = response.getInt("id_user");
-                    Log.d("ronan", token + " " + userId);
+      if (username.getText().toString().equals("")) {
+        Toast.makeText(this, "Vous n'avez pas entré d'identifiant.", Toast.LENGTH_SHORT).show();
+      } else if (password.getText().toString().length() < 8) {
+        Toast.makeText(this, "Le mot de passe doit contenir 8 caractères minimum.", Toast.LENGTH_SHORT).show();
+      } else {
+        // Instantiate the RequestQueue.
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        // TODO : escape URL
+        String url = "https://dev.lamy.bzh/login/" + username.getText().toString() + "/" + password.getText().toString();
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                new Response.Listener<JSONObject>() {
+                  @Override
+                  public void onResponse(JSONObject response) {
+                    try {
+                      // On récupère les valeurs depuis l'objet JSON
+                      String token = response.getString("token");
+                      int userId = response.getInt("id_user");
+                      Log.d("ronan", token + " " + userId);
 
-                    // On créer l'objet d'édition des préférences
-                    SharedPreferences prefs = Login.this.getPreferences(Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = prefs.edit();
+                      // On créer l'objet d'édition des préférences
+                      SharedPreferences prefs = Login.this.getPreferences(Context.MODE_PRIVATE);
+                      SharedPreferences.Editor editor = prefs.edit();
 
-                    // On ajoute les valeurs
-                    editor.putString("token", token);
-                    editor.putInt("userId", userId);
+                      // On ajoute les valeurs
+                      editor.putString("token", token);
+                      editor.putInt("userId", userId);
 
-                    // On enregistre les valeurs
-                    editor.apply();
-                    logedIn();
-                  } catch (JSONException e) {
-                    e.printStackTrace();
+                      // On enregistre les valeurs
+                      editor.apply();
+                      logedIn();
+                    } catch (JSONException e) {
+                      e.printStackTrace();
+                    }
                   }
-                }
-              }, new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-          Toast.makeText(Login.this, "Fail to get data..", Toast.LENGTH_SHORT).show();
-        }
-      });
-      requestQueue.add(jsonObjectRequest);
-    }
+                }, new Response.ErrorListener() {
+
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            Toast.makeText(Login.this, "Fail to get data..", Toast.LENGTH_SHORT).show();
+          }
+        });
+        requestQueue.add(jsonObjectRequest);
+      }
   }
 
 

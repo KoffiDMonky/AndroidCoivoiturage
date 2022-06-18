@@ -13,6 +13,14 @@
     <string name="inscription">Inscription</string>
     <string name="effacer">Effacer</string>
 
+    //à delete, juste pour test input dropdown
+
+    <string-array name="lieux">
+        <item>Vannes</item>
+        <item>Pontivy</item>
+        <item>Rennes</item>
+    </string-array>
+
 
 
 

@@ -10,8 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -19,14 +17,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,13 +43,23 @@ public class PublierTrajet extends Fragment {
                              Bundle savedInstanceState) {
         context = getActivity();
 
-        inputListData(getView());
+        //inputListData(getView());
+
+        //val items = listOf("Option 1", "Option 2", "Option 3", "Option 4")
+        //val adapter = ArrayAdapter(requireContext(), R.layout.list_item, items)
+        //(textField.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+
+        String[] lieux = getResources().getStringArray(R.array.lieux);
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_publier_trajet, container, false);
     }
 
     public void inputListData(View view){
+
+        //val items = listOf("Option 1", "Option 2", "Option 3", "Option 4")
+        //val adapter = ArrayAdapter(requireContext(), R.layout.list_item, items)
+        //(textField.editText as? AutoCompleteTextView)?.setAdapter(adapter)
 
         Log.d("agénor","inputListData");
         // Instantiate the RequestQueue.
@@ -102,11 +106,5 @@ public class PublierTrajet extends Fragment {
         };
         requestQueue.add(jsonArrayRequest);
 
-
-
-
-        //val items = listOf("Option 1", "Option 2", "Option 3", "Option 4")
-       //val adapter = ArrayAdapter(requireContext(), R.layout.list_item, items)
-        //(textField.editText as? AutoCompleteTextView)?.setAdapter(adapter)
     }
 }
