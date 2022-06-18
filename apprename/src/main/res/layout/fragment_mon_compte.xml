@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MonCompte"
+    android:background="#FDFDFD"
     android:gravity="center"
-    android:background="#FDFDFD">
+    tools:context=".MonCompte">
 
     <TextView
         android:id="@+id/fragment_page_news_title"
@@ -36,22 +36,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="409dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_page_news_title">
-
-                <com.google.android.material.textfield.TextInputEditText
-
-                    android:id="@+id/pseudo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Pseudo" />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="409dp"
@@ -100,7 +84,8 @@
                     android:id="@+id/telephone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Téléphone" />
+                    android:hint="Téléphone"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -117,8 +102,27 @@
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email" />
+                    android:hint="Email"
+                    android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="409dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email">
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:id="@+id/ville"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ville" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="409dp"
@@ -168,7 +172,8 @@
                     android:id="@+id/places"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nombre de place" />
+                    android:hint="Nombre de place"
+                    android:inputType="number" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -180,33 +185,42 @@
         android:id="@+id/annuler"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="2dp"
         android:text="Annuler"
         app:layout_constraintBottom_toTopOf="@+id/deconnexion"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/modifier"
+        app:layout_constraintTop_toBottomOf="@+id/scrollview" />
 
     <Button
         android:id="@+id/modifier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="2dp"
+        android:onClick="updateDataUser"
         android:text="Modifier"
         app:layout_constraintBottom_toTopOf="@+id/deconnexion"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/annuler"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollview" />
 
     <Button
         android:id="@+id/deconnexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="134dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="135dp"
-        android:layout_marginBottom="5dp"
         android:text="Déconnexion"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/annuler" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

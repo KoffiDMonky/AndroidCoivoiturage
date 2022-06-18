@@ -63,7 +63,7 @@ public class Login extends AppCompatActivity {
               // On récupère les valeurs depuis l'objet JSON
               String token = response.getString("token");
               int userId = response.getInt("id_user");
-              Log.d("ronan", token + " "+ userId);
+              Log.d("ronan", token + " "+ userId );
               // On créer l'objet d'édition des préférences
               SharedPreferences prefs = Login.this.getPreferences(Context.MODE_PRIVATE);
               SharedPreferences.Editor editor = prefs.edit();

@@ -24,22 +24,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout5"
+        android:id="@+id/depart"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="1dp"
+        android:hint="Départ"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_page_news_title">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/depart"
+        <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="départ" />
+            android:inputType="none"
+            />
+
     </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -51,7 +56,7 @@
             android:layout_marginEnd="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
+            app:layout_constraintTop_toBottomOf="@+id/depart">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/arrivee"
@@ -75,7 +80,8 @@
                 android:id="@+id/date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Date" />
+                android:hint="Date"
+                android:inputType="date" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -93,8 +99,10 @@
                 android:id="@+id/heure"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Heure" />
+                android:hint="Heure"
+                android:inputType="time" />
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"
@@ -115,28 +123,28 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
-
-
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="59dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
         android:text="Valider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="37dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="100dp"
         android:text="Annuler"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

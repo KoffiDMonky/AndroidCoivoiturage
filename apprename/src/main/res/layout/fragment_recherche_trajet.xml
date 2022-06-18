@@ -75,7 +75,8 @@
             android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Date" />
+            android:hint="Date"
+            android:inputType="date" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -93,7 +94,8 @@
             android:id="@+id/heure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Heure" />
+            android:hint="Heure"
+            android:inputType="textImeMultiLine" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -101,20 +103,24 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="59dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
         android:text="Rechercher"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="37dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="100dp"
         android:text="Annuler"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

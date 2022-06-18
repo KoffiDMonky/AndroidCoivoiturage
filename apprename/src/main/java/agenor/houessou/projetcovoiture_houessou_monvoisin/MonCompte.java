@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,19 +47,30 @@ public class MonCompte extends Fragment {
                              Bundle savedInstanceState) {
         context = getActivity();
         getDataUser(getView());
+
+        View v = inflater.inflate(R.layout.fragment_mon_compte, container, false);
+        Button buttonUpdate = v.findViewById(R.id.modifier);
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            //APPEL de la méthode de l'interface pour envoyer message F2
+            //à l'activity quand on clique sur le bouton
+            public void onClick(View v) {
+
+                updateDataUser(v);
+            }
+        });
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mon_compte, container, false);
+        return v;
     }
 
 
     public void getDataUser(View view){
 
-
         Log.d("agénor","getDataUser");
         // Instantiate the RequestQueue.
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         SharedPreferences idUser = context.getSharedPreferences("Login", Context.MODE_PRIVATE);
-        Log.d("agénor","setIdUser:"+idUser.getInt("userId", 1));
 
         String url = "https://dev.lamy.bzh/selectPersonne/" + idUser.getInt("userId", 1) ;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
@@ -91,9 +103,9 @@ public class MonCompte extends Fragment {
                             editTextMail.setText(email, TextView.BufferType.EDITABLE);
 
 
-                            //String ville = response.getString("ville");
-                            //EditText editTextVille = (EditText)getView().findViewById(R.id.adresse);
-                            //editTextVille.setText(ville, TextView.BufferType.EDITABLE);
+                            String ville = response.getString("ville");
+                            EditText editTextVille = (EditText)getView().findViewById(R.id.ville);
+                            editTextVille.setText(ville, TextView.BufferType.EDITABLE);
 
                             String nbPlaces = response.getString("nb_places");
                             EditText editTextPlace = (EditText)getView().findViewById(R.id.places);
@@ -106,10 +118,6 @@ public class MonCompte extends Fragment {
                             String modele = response.getString("modele");
                             EditText editTextModele = (EditText)getView().findViewById(R.id.modele);
                             editTextModele.setText(modele, TextView.BufferType.EDITABLE);
-
-
-
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -136,4 +144,68 @@ public class MonCompte extends Fragment {
         requestQueue.add(jsonObjectRequest);
 
     }
+
+    // Lancé à l'appuie du bouton "Modifier"
+    public void updateDataUser(View view){
+
+        Log.d("agénor","upDateDataUser");
+
+        EditText nom = getView().findViewById(R.id.nom);
+        EditText prenom = getView().findViewById(R.id.prenom);
+        EditText tel = getView().findViewById(R.id.telephone);
+        EditText email = getView().findViewById(R.id.email);
+        EditText ville = getView().findViewById(R.id.ville);
+        EditText nbPlaces = getView().findViewById(R.id.places);
+        EditText marque = getView().findViewById(R.id.marque);
+        EditText modele = getView().findViewById(R.id.modele);
+
+
+        if (nom.getText().toString().equals("")) {
+            Toast.makeText(context, "Vous n'avez pas entré de nom.", Toast.LENGTH_SHORT).show();
+        } else if (prenom.getText().toString().equals("")) {
+            Toast.makeText(context, "Vous n'avez pas entré de prenom.", Toast.LENGTH_SHORT).show();
+        } else if (tel.getText().toString().equals("")) {
+            Toast.makeText(context, "Vous n'avez pas entré de numéro de téléphone.", Toast.LENGTH_SHORT).show();
+        } else if (email.getText().toString().equals("")) {
+            Toast.makeText(context, "Vous n'avez pas entré d'email.", Toast.LENGTH_SHORT).show();
+        } else if (nbPlaces.getText().toString().equals("")) {
+            Toast.makeText(context, "Vous n'avez pas entré le nombre de place disponible.", Toast.LENGTH_SHORT).show();
+        } else if (marque.getText().toString().equals("")) {
+            Toast.makeText(context, "Vous n'avez pas entré la marque de votre véhicule.", Toast.LENGTH_SHORT).show();
+        } else if (modele.getText().toString().equals("")) {
+            Toast.makeText(context, "Vous n'avez pas entré la modèle de votre véhicule.", Toast.LENGTH_SHORT).show();
+        } else {
+
+
+            // Instantiate the RequestQueue.
+            RequestQueue requestQueue = Volley.newRequestQueue(context);
+            SharedPreferences idUser = context.getSharedPreferences("Login", Context.MODE_PRIVATE);
+            Log.d("agénor", "setIdUser:" + idUser.getInt("userId", 1));
+
+            //String url = "https://dev.lamy.bzh/updatePersonne/" + idUser.getInt("userId", 1) + "/" + nom.getText().toString() + "/" + prenom.getText().toString() + "/" + tel.getText().toString() + "/" + email.getText().toString() + "/" + ville.getText().toString() + "/" + nbPlaces.getText().toString() + "/" + marque.getText().toString() + "/" + modele.getText().toString() ;
+            String url = "https://dev.lamy.bzh/updatePersonne/ronan/monvoisin/0606060606/ronan@free.fr/7/8/5/22";
+            Log.d("agénor", "url:" + url);
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    Request.Method.GET,
+                    url,
+                    null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.d("agénor", "responseUpdate:" + response.toString());
+                            if(response.equals("ok")){
+                                 Toast.makeText(context, "Vous avez bien modifié votre compte.", Toast.LENGTH_SHORT).show();
+                             }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(context, "Nous ne sommes pas parvenu à mettre à jours votre compte ...", Toast.LENGTH_SHORT).show();
+                }
+            });
+            requestQueue.add(jsonObjectRequest);
+        }
+    }
+
 }
