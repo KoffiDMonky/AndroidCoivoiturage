@@ -69,19 +69,6 @@ public class PublierTrajet extends Fragment {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        ArrayList<Trajet> listeVille = new ArrayList<Trajet>();
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
-                                JSONArray array = response.getJSONArray(i);
-                                JSONObject data = array.getJSONObject(0);
-
-                                Log.d("agénor response : ", array.toString());
-
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
 
                         //try {
 

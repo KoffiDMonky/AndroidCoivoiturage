@@ -3,19 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListeDesTrajets"
+    tools:context=".liste.trajets.ListeDesTrajets"
     android:gravity="center"
     android:background="#FDFDFD">
 
-    <Button
-        android:id="@+id/getList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="getListeTrajet"
-        android:text="getList" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/trajetSoloListe"
+        android:name="agenor.houessou.projetcovoiture_houessou_monvoisin.TrajetSolo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:visibility="gone"
+        tools:visibility="gone" />
 
     <ListView
         android:id="@+id/listeTrajet"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+
+    </ListView>
 </FrameLayout>

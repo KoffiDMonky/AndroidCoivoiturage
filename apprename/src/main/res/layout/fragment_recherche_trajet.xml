@@ -25,6 +25,24 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/search_heure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Heure" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout5"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -36,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_page_news_title">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/depart"
+            android:id="@+id/search_depart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="départ" />
@@ -54,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/arrivee"
+            android:id="@+id/search_arrivee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Arrivée" />
@@ -72,30 +90,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/date"
+            android:id="@+id/search_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Date"
-            android:inputType="date" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/heure"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Heure"
-            android:inputType="textImeMultiLine" />
+            android:hint="Date" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -103,24 +101,32 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginBottom="36dp"
         android:text="Rechercher"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="37dp"
         android:text="Annuler"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ListView
+        android:id="@+id/listeTrajetRecherche"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+
+    </ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
