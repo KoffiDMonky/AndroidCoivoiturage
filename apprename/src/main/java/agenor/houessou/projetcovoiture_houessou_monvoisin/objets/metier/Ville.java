@@ -1,5 +1,6 @@
 package agenor.houessou.projetcovoiture_houessou_monvoisin.objets.metier;
 import android.content.Context;
+import android.util.Log;
 
 import java.io.Serializable;
 import java.text.ParseException;
@@ -11,6 +12,7 @@ public class Ville implements Serializable {
   private String nom;
 
   public Ville(int id, String nom) {
+    Log.d("ronan","new ville :"+id+nom);
     setId(id);
     setNom(nom);
   }
