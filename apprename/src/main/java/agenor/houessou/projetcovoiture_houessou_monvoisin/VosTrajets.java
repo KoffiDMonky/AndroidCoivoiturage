@@ -93,7 +93,7 @@ public class VosTrajets extends Fragment {
                                 e.printStackTrace();
                             }
                         }
-                        Log.d("ronan","start Adapteur");
+                        Log.d("agénor","start Adapteur");
                         ListView viewListeTrajet = (ListView)getView().findViewById(R.id.listeTrajet);
                         AdapteurTrajet adapteurTrajet = new AdapteurTrajet(context, R.layout.trajet_in_list_layout, listeTrajet, getActivity());
 
