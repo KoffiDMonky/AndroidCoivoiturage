@@ -40,7 +40,7 @@ import agenor.houessou.projetcovoiture_houessou_monvoisin.ui.main.SectionsPagerA
 public class Login extends AppCompatActivity {
   private Context rContext;
   private ActivityMainBinding binding;
-  private int ok = 0;
+  private Boolean ok = false;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class Login extends AppCompatActivity {
     super.onStart();
 
     SharedPreferences token = this.getSharedPreferences("Login", Context.MODE_PRIVATE);
-    if(token.getString("token","vide") != "vide")
+    if(token.getString("token","vide") != "vide" && testToken())
       logedIn();
   }
 
@@ -123,25 +123,45 @@ public class Login extends AppCompatActivity {
     tabs.setupWithViewPager(viewPager);
   }
 
-  public int textToken(){
+  public Boolean testToken(){
+    // On récupère les infos stocké
     SharedPreferences token = getApplicationContext().getSharedPreferences("Login", Context.MODE_PRIVATE);
 
+    // On créer une requete avec Volley
     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-    String url = "https://dev.lamy.bzh/selectPersonne/"+token.getString("userId","0");
+    // On déclare l'url de la requete
+    String url = "https://dev.lamy.bzh/selectPersonne/"+token.getInt("userId",0);
+    // On définie la requete et le type de réponse qu'elle recois (ici objet)
+    // On fait ça pour vérifier que le token est bon et pour récupérer les informations de la personne connecté
     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-            url,
-            new Response.Listener<JSONObject>() {
-              @Override
-              public void onResponse(JSONObject response) {
-                ok = 1;
-              }
-            }, new Response.ErrorListener() {
+      url,
+      new Response.Listener<JSONObject>() {
+        @Override
+        public void onResponse(JSONObject response) {
+          // Try/catch pour le getString de répones au cas où y'en ai pas de type "prenom"
+          try {
+            // On affiche un message de bievenue
+            Toast.makeText(getApplicationContext(), "Bienvenue "+response.getString("prenom"), Toast.LENGTH_SHORT).show();
+          } catch (JSONException e) {
+            e.printStackTrace();
+          }
+          // TODO : mettre en cache les données
+
+          // On passe le ok a true car le token est bon
+          ok = true;
+          // On lance la method logedIn qui change d'écran
+          logedIn();
+        }
+      }, new Response.ErrorListener() {
       @Override
       public void onErrorResponse(VolleyError error) {
+        Log.e("ronan",error.toString());
         Toast.makeText(getApplicationContext(), "Fail to get data..", Toast.LENGTH_SHORT).show();
-        ok = 0;
+        // On passe le ok a false car le token est pas bon
+        ok = false;
       }
     }) {
+      // On défini le token dans les parametres du header.
       @Override
       public Map<String, String> getHeaders(){
         Map<String, String> params = new HashMap<String, String>();
@@ -154,6 +174,7 @@ public class Login extends AppCompatActivity {
     return ok;
   }
 
+  // Methode de test
   public void test(View view){
     SharedPreferences prefs = Login.this.getPreferences(Context.MODE_PRIVATE);
     Toast.makeText(Login.this, prefs.getString("token","vide") + " "+ prefs.getInt("userId",0), Toast.LENGTH_SHORT).show();
