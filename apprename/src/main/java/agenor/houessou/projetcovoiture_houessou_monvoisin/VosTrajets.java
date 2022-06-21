@@ -61,6 +61,8 @@ public class VosTrajets extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         SharedPreferences idUser = context.getSharedPreferences("Login", Context.MODE_PRIVATE);
 
+
+
         String url = "https://dev.lamy.bzh/listeInscriptionUser/" + idUser.getInt("userId", 1) ;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 url,
@@ -76,6 +78,8 @@ public class VosTrajets extends Fragment {
                             try {
                                 JSONArray array = response.getJSONArray(i);
                                 JSONObject data = array.getJSONObject(0);
+
+                                Log.d("agénor data :",  data.toString());
                                 Trajet trajet = new Trajet(
                                         data.getInt("id"),
                                         data.getString("ville_dep"),

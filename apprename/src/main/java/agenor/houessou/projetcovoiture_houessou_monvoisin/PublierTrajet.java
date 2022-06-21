@@ -35,39 +35,37 @@ import java.util.Map;
 public class PublierTrajet extends Fragment {
 
     private Context context;
-
     public static PublierTrajet newInstance() {
         return (new PublierTrajet());
     }
 
-    String[] lieux = {"Vannes", "Rennes", "Pontivy"};
-    AutoCompleteTextView autoCompleteTxt;
-    ArrayAdapter<String> adapterLieux;
+    //String[] items = {"Vannes", "Rennes", "Pontivy"};
+    int items = R.array.listeVille;
+
+
+
+
+
+    AutoCompleteTextView autoCompleteTxt1;
+    ArrayAdapter<String> adapterItems;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        context = getActivity();
 
-        //inputListData(getView());
-
-        //val items = listOf("Option 1", "Option 2", "Option 3", "Option 4")
-        //val adapter = ArrayAdapter(requireContext(), R.layout.list_item, items)
-        //(textField.editText as? AutoCompleteTextView)?.setAdapter(adapter)
-
-       // String[] lieux = getResources().getStringArray(R.array.lieux);
-       // String[] adapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, lieux);
+        Log.d("agénor Items","items");
+        context = container.getContext();
         View v = inflater.inflate(R.layout.fragment_publier_trajet, container, false);
-        autoCompleteTxt = v.findViewById(R.id.autoCompleteTextView);
 
-        adapterLieux = new ArrayAdapter<String>(context, R.layout.dropdown_item,lieux);
-        autoCompleteTxt.setAdapter(adapterLieux);
+        autoCompleteTxt1 = v.findViewById(R.id.auto_complete_txt1);
+        adapterItems = new ArrayAdapter<String>(context, R.layout.list_item, items);
+        autoCompleteTxt1.setAdapter(adapterItems);
 
-        autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        autoCompleteTxt1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
-                String lieu = parent.getItemAtPosition(i).toString();
-                Toast.makeText(context, "lieu: "+lieu, Toast.LENGTH_SHORT).show();
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String item = adapterView.getItemAtPosition(i).toString();
+                Toast.makeText(context, "Item:"+item, Toast.LENGTH_SHORT).show();
             }
         });
 
