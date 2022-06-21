@@ -1,12 +1,15 @@
 package agenor.houessou.projetcovoiture_houessou_monvoisin.liste.trajets;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,10 +33,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.zip.Inflater;
 
+import agenor.houessou.projetcovoiture_houessou_monvoisin.Login;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.R;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.TrajetSolo;
+import agenor.houessou.projetcovoiture_houessou_monvoisin.databinding.ActivityMainBinding;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.objets.metier.Trajet;
+import agenor.houessou.projetcovoiture_houessou_monvoisin.ui.main.SectionsPagerAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,6 +51,7 @@ public class ListeDesTrajets extends Fragment implements AdapterView.OnItemClick
   private Context context;
   private ViewGroup container;
   private ArrayList<Trajet> listeTrajet;
+  private Inflater inflater;
 
   public static ListeDesTrajets newInstance() {
     return (new ListeDesTrajets());
@@ -69,7 +78,7 @@ public class ListeDesTrajets extends Fragment implements AdapterView.OnItemClick
       new Response.Listener<JSONArray>() {
         @Override
         public void onResponse(JSONArray response) {
-
+          Log.d("ronan",response.toString());
           for (int i = 0; i < response.length(); i++) {
             try {
               JSONArray array = response.getJSONArray(i);
@@ -99,7 +108,19 @@ public class ListeDesTrajets extends Fragment implements AdapterView.OnItemClick
       }, new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
+          Log.d("ronan","error getting list");
           Toast.makeText(context, "Fail to get data..", Toast.LENGTH_SHORT).show();
+
+          // On créer l'objet d'édition des préférences
+          SharedPreferences prefs = getContext().getSharedPreferences("Login",Context.MODE_PRIVATE);
+          SharedPreferences.Editor editor = prefs.edit();
+
+          // On ajoute les valeurs
+          editor.putString("token", "vide");
+          editor.putInt("userId", 0);
+
+          // On enregistre les valeurs
+          editor.apply();
         }
     }) {
       @Override

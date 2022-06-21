@@ -5,17 +5,20 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -25,12 +28,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import agenor.houessou.projetcovoiture_houessou_monvoisin.databinding.ActivityMainBinding;
+import agenor.houessou.projetcovoiture_houessou_monvoisin.liste.trajets.AdapteurTrajet;
+import agenor.houessou.projetcovoiture_houessou_monvoisin.liste.trajets.ListeDesTrajets;
+import agenor.houessou.projetcovoiture_houessou_monvoisin.objets.metier.Trajet;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.ui.main.SectionsPagerAdapter;
 
 public class Login extends AppCompatActivity {
   private Context rContext;
   private ActivityMainBinding binding;
+  private int ok = 0;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +109,6 @@ public class Login extends AppCompatActivity {
     }
   }
 
-
   public void logedIn() {
     setContentView(R.layout.activity_main);
 
@@ -111,6 +120,37 @@ public class Login extends AppCompatActivity {
     viewPager.setAdapter(sectionsPagerAdapter);
     TabLayout tabs = binding.tabs;
     tabs.setupWithViewPager(viewPager);
+  }
+
+  public int textToken(){
+    SharedPreferences token = getApplicationContext().getSharedPreferences("Login", Context.MODE_PRIVATE);
+
+    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+    String url = "https://dev.lamy.bzh/selectPersonne/"+token.getString("userId","0");
+    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+            url,
+            new Response.Listener<JSONObject>() {
+              @Override
+              public void onResponse(JSONObject response) {
+                ok = 1;
+              }
+            }, new Response.ErrorListener() {
+      @Override
+      public void onErrorResponse(VolleyError error) {
+        Toast.makeText(getApplicationContext(), "Fail to get data..", Toast.LENGTH_SHORT).show();
+        ok = 0;
+      }
+    }) {
+      @Override
+      public Map<String, String> getHeaders(){
+        Map<String, String> params = new HashMap<String, String>();
+        Log.d("ronan","setHeader:"+token.getString("token","vide"));
+        params.put("x-auth-token", token.getString("token","vide"));
+        return params;
+      }
+    };
+    requestQueue.add(jsonObjectRequest);
+    return ok;
   }
 
   public void test(View view){

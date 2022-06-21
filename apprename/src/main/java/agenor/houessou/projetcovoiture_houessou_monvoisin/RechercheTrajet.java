@@ -1,5 +1,7 @@
 package agenor.houessou.projetcovoiture_houessou_monvoisin;
 
+import static java.lang.Integer.parseInt;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,9 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -30,11 +34,14 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import agenor.houessou.projetcovoiture_houessou_monvoisin.liste.trajets.AdapteurTrajet;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.liste.trajets.ListeDesTrajets;
+import agenor.houessou.projetcovoiture_houessou_monvoisin.objets.metier.AdapteurVille;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.objets.metier.Trajet;
+import agenor.houessou.projetcovoiture_houessou_monvoisin.objets.metier.Ville;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,6 +52,7 @@ public class RechercheTrajet extends Fragment implements AdapterView.OnItemClick
     private Context context;
     private View view;
     private ArrayList<Trajet> listeTrajet;
+    private ArrayList<Ville> listeVilles;
 
     public static RechercheTrajet newInstance() {
         return (new RechercheTrajet());
@@ -70,6 +78,57 @@ public class RechercheTrajet extends Fragment implements AdapterView.OnItemClick
                 searchListeTrajet(RechercheTrajet.this.view);
             }
         });
+        /*
+        // TODO : setup l'adapteur
+        //https://developer.android.com/guide/topics/ui/controls/spinner
+        Spinner spinner = (Spinner) view.findViewById(R.id.ville_spinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        AdapteurVille adapter = new AdapteurVille(context, getVilles(view));
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);*/
+    }
+
+    public ArrayList getVilles(View view){
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        String url = "https://dev.lamy.bzh/listeVilles";
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        listeVilles = new ArrayList<Ville>();
+                        JSONObject json_array = response.optJSONObject(0);
+
+                        Iterator<?> keys = json_array.keys();
+
+                        while( keys.hasNext() ) {
+                            String key = (String) keys.next();
+                            try {
+                                listeVilles.add(new Ville( parseInt(key),(String)json_array.get(key)));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "Fail to get data..", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders(){
+                Map<String, String> params = new HashMap<String, String>();
+                SharedPreferences token = context.getSharedPreferences("Login", Context.MODE_PRIVATE);
+                Log.d("ronan","setHeader:"+token.getString("token","vide"));
+                params.put("x-auth-token", token.getString("token","vide"));
+                return params;
+            }
+        };
+        requestQueue.add(jsonArrayRequest);
+        return listeVilles;
     }
 
     public void getListeTrajet(View view) {
