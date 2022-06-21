@@ -10,6 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -37,6 +40,9 @@ public class PublierTrajet extends Fragment {
         return (new PublierTrajet());
     }
 
+    String[] lieux = {"Vannes", "Rennes", "Pontivy"};
+    AutoCompleteTextView autoCompleteTxt;
+    ArrayAdapter<String> adapterLieux;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,7 +55,22 @@ public class PublierTrajet extends Fragment {
         //val adapter = ArrayAdapter(requireContext(), R.layout.list_item, items)
         //(textField.editText as? AutoCompleteTextView)?.setAdapter(adapter)
 
-        String[] lieux = getResources().getStringArray(R.array.lieux);
+       // String[] lieux = getResources().getStringArray(R.array.lieux);
+       // String[] adapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, lieux);
+        View v = inflater.inflate(R.layout.fragment_publier_trajet, container, false);
+        autoCompleteTxt = v.findViewById(R.id.autoCompleteTextView);
+
+        adapterLieux = new ArrayAdapter<String>(context, R.layout.dropdown_item,lieux);
+        autoCompleteTxt.setAdapter(adapterLieux);
+
+        autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
+                String lieu = parent.getItemAtPosition(i).toString();
+                Toast.makeText(context, "lieu: "+lieu, Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_publier_trajet, container, false);
