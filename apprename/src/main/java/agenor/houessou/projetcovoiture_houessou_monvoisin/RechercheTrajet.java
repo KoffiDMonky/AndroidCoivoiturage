@@ -121,7 +121,7 @@ public class RechercheTrajet extends Fragment implements AdapterView.OnItemClick
                         // Create an ArrayAdapter using the string array and a default spinner layout
                         AdapteurVille adapter = new AdapteurVille(actualContext, listeVilles, getActivity());
                         // Specify the layout to use when the list of choices appears
-                        adapter.setDropDownViewResource(R.layout.list_item);
+                        //adapter.setDropDownViewResource(R.layout.list_item);
                         // Apply the adapter to the spinner
                         spinner.setAdapter(adapter);
                     }

@@ -46,9 +46,9 @@
         <entry key="..\:/work/cours/android/androidcovoit/apprename/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/work/cours/android/androidcovoit/apprename/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/work/cours/android/androidcovoit/apprename/src/main/res/layout/fragment_mon_compte.xml" value="0.18802083333333333" />
-        <entry key="..\:/work/cours/android/androidcovoit/apprename/src/main/res/layout/fragment_recherche_trajet.xml" value="0.18802083333333333" />
+        <entry key="..\:/work/cours/android/androidcovoit/apprename/src/main/res/layout/fragment_recherche_trajet.xml" value="0.25" />
         <entry key="..\:/work/cours/android/androidcovoit/apprename/src/main/res/layout/list_item.xml" value="0.18802083333333333" />
-        <entry key="..\:/work/cours/android/androidcovoit/apprename/src/main/res/layout/list_ville.xml" value="0.18802083333333333" />
+        <entry key="..\:/work/cours/android/androidcovoit/apprename/src/main/res/layout/list_ville.xml" value="0.33" />
       </map>
     </option>
   </component>

@@ -23,9 +23,18 @@ public class AdapteurVille extends ArrayAdapter<Ville> {
     lVilles = villes;
     inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
   }
+
+  @Override
+  public View getDropDownView(int position, View convertView,
+                              ViewGroup parent) {
+    // TODO Auto-generated method stub
+    return getCustomView(position, convertView, parent);
+  }
+
   public int getCount(){
     return lVilles.size();
   }
+
   public int size(){
     return lVilles.size();
   }
@@ -68,5 +77,15 @@ public class AdapteurVille extends ArrayAdapter<Ville> {
 
     }
     return vi;
+  }
+  public View getCustomView(int position, View convertView, ViewGroup parent) {
+    // TODO Auto-generated method stub
+    //return super.getView(position, convertView, parent);
+
+    View row=inflater.inflate(R.layout.list_item, parent, false);
+    TextView label=(TextView)row.findViewById(R.id.text);
+    label.setText(lVilles.get(position).getNom());
+
+    return row;
   }
 }
