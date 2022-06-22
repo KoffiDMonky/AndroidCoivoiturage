@@ -66,6 +66,8 @@ public class RechercheTrajet extends Fragment implements AdapterView.OnItemClick
         listeTrajet = new ArrayList<Trajet>();
         View view = getView();
         getListeTrajet(view);
+        Log.d("agénor listeTrajetRech",listeTrajet.toArray().toString());
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_recherche_trajet, container, false);
     }

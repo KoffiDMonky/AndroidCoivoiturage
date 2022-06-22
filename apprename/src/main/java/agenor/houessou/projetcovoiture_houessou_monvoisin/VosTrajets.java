@@ -59,8 +59,11 @@ public class VosTrajets extends Fragment implements AdapterView.OnItemClickListe
                              Bundle savedInstanceState) {
         context = getActivity();
         listeTrajet = new ArrayList<Trajet>();
+
         View view = getView();
         getMesTrajet(view);
+        Log.d("agénor listeVosTrajets",listeTrajet.toArray().toString());
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_vos_trajets, container, false);
     }
@@ -87,11 +90,11 @@ public class VosTrajets extends Fragment implements AdapterView.OnItemClickListe
                                 JSONObject data = array.getJSONObject(0);
                                 Trajet trajet = new Trajet(
                                         data.getInt("id"),
-                                        data.getString("ville_dep"),
-                                        data.getString("ville_arr"),
-                                        data.getInt("nbKms"),
-                                        data.getString("DateTrajet"),
-                                        data.getInt("id_pers")
+                                        data.getJSONObject("trajet").getString("ville_dep"),
+                                        data.getJSONObject("trajet").getString("ville_arr"),
+                                        data.getJSONObject("trajet").getInt("nbKms"),
+                                        data.getJSONObject("trajet").getString("DateTrajet"),
+                                        data.getJSONObject("trajet").getInt("id_pers")
                                 );
                                 listeTrajet.add(trajet);
                             } catch (JSONException e) {
