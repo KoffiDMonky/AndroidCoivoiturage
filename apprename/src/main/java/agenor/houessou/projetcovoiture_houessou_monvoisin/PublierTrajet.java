@@ -2,8 +2,11 @@ package agenor.houessou.projetcovoiture_houessou_monvoisin;
 
 import static java.lang.Integer.parseInt;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,7 +18,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -30,6 +36,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -48,20 +55,12 @@ public class PublierTrajet extends Fragment {
     private Context context;
     private ArrayList<Trajet> listeTrajet;
     private ArrayList<Ville> listeVilles = new ArrayList<Ville>();
+    EditText etDate;
+    DatePickerDialog.OnDateSetListener setListener;
 
     public static PublierTrajet newInstance() {
         return (new PublierTrajet());
     }
-
-    //String[] items = {"Vannes", "Rennes", "Pontivy"};
-    int items = R.array.listeVille;
-
-
-
-
-
-    AutoCompleteTextView autoCompleteTxt1;
-    ArrayAdapter<String> adapterItems;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,74 +70,33 @@ public class PublierTrajet extends Fragment {
         context = container.getContext();
         View v = inflater.inflate(R.layout.fragment_publier_trajet, container, false);
 
-        /*autoCompleteTxt1 = v.findViewById(R.id.auto_complete_txt1);
-        adapterItems = new ArrayAdapter<String>(context, R.layout.list_item, items);
-        autoCompleteTxt1.setAdapter(adapterItems);
+        etDate = v.findViewById(R.id.date);
 
-        autoCompleteTxt1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+        etDate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String item = adapterView.getItemAtPosition(i).toString();
-                Toast.makeText(context, "Item:"+item, Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                Log.d("agénor", "click");
+                DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        month = month+1;
+                        String date = day+"/"+month+"/"+year;
+                        etDate.setText(date);
+                    }
+                }, year,month,day);
+                datePickerDialog.show();
             }
-        });*/
+        });
 
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_publier_trajet, container, false);
-    }
-
-    public void inputListData(View view){
-
-        //val items = listOf("Option 1", "Option 2", "Option 3", "Option 4")
-        //val adapter = ArrayAdapter(requireContext(), R.layout.list_item, items)
-        //(textField.editText as? AutoCompleteTextView)?.setAdapter(adapter)
-
-        Log.d("agénor","inputListData");
-        // Instantiate the RequestQueue.
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-
-        String url = "https://dev.lamy.bzh/listeVille";
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                Request.Method.GET,
-                url,
-                null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-
-                        //try {
-
-                            // On récupère les valeurs depuis l'objet JSON
-
-                            //String nom = response.getString("nom");
-                            //EditText editTextNom = (EditText)getView().findViewById(R.id.nom);
-                            //editTextNom.setText(nom, TextView.BufferType.EDITABLE);
-
-
-                        //} catch (JSONException e) {
-                        //    e.printStackTrace();
-                        //}
-
-
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, "Fail to get data..", Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders(){
-                Map<String, String> params = new HashMap<String, String>();
-                SharedPreferences token = context.getSharedPreferences("Login", Context.MODE_PRIVATE);
-                params.put("x-auth-token", token.getString("token","vide"));
-                return params;
-            }
-        };
-        requestQueue.add(jsonArrayRequest);
-
     }
 
     public void getVilles(View view, Context actualContext){
