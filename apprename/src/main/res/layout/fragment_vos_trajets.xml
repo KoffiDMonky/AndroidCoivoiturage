@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".VosTrajets"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VosTrajets"
     android:gravity="center"
     android:background="#FDFDFD">
+
 
     <TextView
         android:id="@+id/fragment_page_news_title"
@@ -14,15 +16,33 @@
         android:layout_margin="20dip"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Mes trajets"
+        android:text="Vos trajets"
         android:textAlignment="center"
         android:textColor="#26BFBF"
         android:textSize="15sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/listeTrajet"
+        android:id="@+id/listeVosTrajets"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_page_news_title">
 
-</FrameLayout>
+    </ListView>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="listeVosTrajets,fragment_page_news_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

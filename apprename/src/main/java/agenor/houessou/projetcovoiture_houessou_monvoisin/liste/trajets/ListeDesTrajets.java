@@ -38,7 +38,6 @@ import java.util.zip.Inflater;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.Login;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.R;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.TrajetSolo;
-import agenor.houessou.projetcovoiture_houessou_monvoisin.databinding.ActivityMainBinding;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.objets.metier.Trajet;
 import agenor.houessou.projetcovoiture_houessou_monvoisin.ui.main.SectionsPagerAdapter;
 

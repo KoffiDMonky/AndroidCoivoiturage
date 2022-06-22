@@ -155,6 +155,7 @@ public class RechercheTrajet extends Fragment implements AdapterView.OnItemClick
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        Log.d("agénor","response recherchetrajet:"+response.toString());
 
                         for (int i = 0; i < response.length(); i++) {
                             try {
@@ -228,6 +229,7 @@ public class RechercheTrajet extends Fragment implements AdapterView.OnItemClick
                             try {
                                 JSONArray array = response.getJSONArray(i);
                                 JSONObject data = array.getJSONObject(0);
+                                Log.d("agénor datarecherche ",  data.toString());
                                 Trajet trajet = new Trajet(
                                         data.getInt("id"),
                                         data.getString("ville_dep"),
@@ -236,11 +238,13 @@ public class RechercheTrajet extends Fragment implements AdapterView.OnItemClick
                                         data.getString("DateTrajet"),
                                         data.getInt("id_pers")
                                 );
+
                                 listeTrajet.add(trajet);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
+
 
                         // Create front list
                         Log.d("ronan","start Adapteur");
