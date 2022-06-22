@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
@@ -150,32 +149,81 @@ public class PublierTrajet extends Fragment {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
-                                JSONObject item = response.getJSONObject(i);
+                        RequestQueue requestQueue = Volley.newRequestQueue(context);
+                        String url = "https://dev.lamy.bzh/listeCodePostal";
+                        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                                url,
+                                new Response.Listener<JSONArray>() {
+                                    @Override
+                                    public void onResponse(JSONArray responseCP) {
+                                        Map<Integer, Integer> mapCP = new HashMap<Integer, Integer>();
 
-                                Iterator<String> keys = item.keys();
+                                        for (int iCP = 0; iCP < responseCP.length(); iCP++){
+                                            try {
+                                                JSONObject item = responseCP.getJSONObject(iCP);
 
-                                while( keys.hasNext() ) {
-                                    String key = (String) keys.next();
-                                    try {
-                                        listeVilles.add(new Ville(parseInt(key),(String)item.get(key)));
-                                    } catch (JSONException e) {
-                                        Log.e("ronan",e.toString());
-                                        e.printStackTrace();
+                                                Iterator<String> keys = item.keys();
+
+                                                while( keys.hasNext() ) {
+                                                    String key = (String) keys.next();
+                                                    try {
+                                                        mapCP.put(parseInt(key),(Integer) item.get(key));
+                                                    } catch (JSONException e) {
+                                                        Log.e("ronan",e.toString());
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        for (int i = 0; i < response.length(); i++) {
+                                            try {
+                                                JSONObject item = response.getJSONObject(i);
+
+                                                Iterator<String> keys = item.keys();
+
+                                                while( keys.hasNext() ) {
+                                                    String key = (String) keys.next();
+                                                    try {
+                                                        listeVilles.add(new Ville(
+                                                                parseInt(key),
+                                                                (String)item.get(key),
+                                                                mapCP.get(parseInt(key))
+                                                        ));
+                                                    } catch (JSONException e) {
+                                                        Log.e("ronan",e.toString());
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        Spinner spinner = (Spinner) view.findViewById(R.id.ville_dep_spinner);
+                                        // Create an ArrayAdapter using the string array and a default spinner layout
+                                        AdapteurVille adapter = new AdapteurVille(actualContext, listeVilles, getActivity());
+                                        spinner.setAdapter(adapter);
+                                        Spinner spinner_arr = (Spinner) view.findViewById(R.id.ville_arr_spinner);
+                                        spinner_arr.setAdapter(adapter);
                                     }
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                                }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.d("ronan",error.toString());
+                                Toast.makeText(context, "Fail to get data..", Toast.LENGTH_SHORT).show();
                             }
-                        }
-                        Spinner spinner = (Spinner) view.findViewById(R.id.ville_spinner);
-                        // Create an ArrayAdapter using the string array and a default spinner layout
-                        AdapteurVille adapter = new AdapteurVille(actualContext, listeVilles, getActivity());
-                        // Specify the layout to use when the list of choices appears
-                        //adapter.setDropDownViewResource(R.layout.list_item);
-                        // Apply the adapter to the spinner
-                        spinner.setAdapter(adapter);
+                        }) {
+                            @Override
+                            public Map<String, String> getHeaders(){
+                                Map<String, String> params = new HashMap<String, String>();
+                                SharedPreferences token = context.getSharedPreferences("Login", Context.MODE_PRIVATE);
+                                //Log.d("ronan","setHeader:"+token.getString("token","vide"));
+                                params.put("x-auth-token", token.getString("token","vide"));
+                                return params;
+                            }
+                        };
+                        requestQueue.add(jsonArrayRequest);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -195,5 +243,4 @@ public class PublierTrajet extends Fragment {
         };
         requestQueue.add(jsonArrayRequest);
     }
-
 }
